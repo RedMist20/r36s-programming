@@ -346,3 +346,34 @@ First of all, this repository, and this article is work in progress. I hope to e
 However, my intention was not to teach "everything". There are lots of material available on the net about Linux, SDL, git, game programming, and more. My intent was to try to put these into perspective with regards to the R36S.
 
 Please let me know your feedback and comments!
+
+## SDL2 Tools Menu (C replacement for `Tools Menu.sh`)
+
+A native SDL2 version of the tools menu is included in:
+
+- `cprog/tools-menu-sdl2/tools-menu-sdl2.c`
+
+It keeps the same core actions from `Tools Menu.sh` (wifi scan, monitor/managed mode, channel, txpower, network restart, driver checks, dmesg, etc.) and renders command output directly in a 640×480 GUI.
+
+Build and run:
+
+```bash
+cd cprog/tools-menu-sdl2
+cmake -S . -B build
+cmake --build build
+./build/tools-menu-sdl2
+```
+
+Controls on R36S:
+
+- D-Pad up/down: select menu item
+- A: run selected command
+- B: exit
+- X/Y: scroll terminal output
+
+For numeric prompts (channel/txpower):
+
+- D-Pad left/right: move cursor
+- D-Pad up/down: change digit
+- A: confirm/run
+- B: cancel
