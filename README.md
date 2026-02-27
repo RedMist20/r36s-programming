@@ -346,3 +346,37 @@ First of all, this repository, and this article is work in progress. I hope to e
 However, my intention was not to teach "everything". There are lots of material available on the net about Linux, SDL, git, game programming, and more. My intent was to try to put these into perspective with regards to the R36S.
 
 Please let me know your feedback and comments!
+
+# SDL2 Tools Menu (replacement for `Tools Menu.sh`)
+
+This repo now includes a native SDL2 + SDL2_ttf C program that mirrors the command set from `Tools Menu.sh`:
+
+- source: `cprog/tools-menu-sdl2/tools-menu-sdl2.c`
+- build files: `cprog/tools-menu-sdl2/CMakeLists.txt`
+
+Extra additions beyond the shell script:
+
+- `MDK4 status + version` (checks whether `mdk4` is installed and prints version)
+- `MDK4 help (safe read-only)` (shows `mdk4 --help` output)
+
+Build and run:
+
+```bash
+cd ~/git/r36s-programming/cprog/tools-menu-sdl2
+mkdir -p build && cd build
+cmake -GNinja ..
+ninja
+./tools-menu-sdl2
+```
+
+Controls:
+
+- D-pad / left joystick up/down: move selection
+- A or B: run selected command
+- Left/right: adjust Channel or TxPower values on their respective menu entries
+- Start or ESC: exit back to terminal
+- X (or keyboard `x`): clear terminal output pane
+- Y: toggle terminal input mode
+- While in input mode, type a shell command and press Enter (or A/B) to run it
+
+The app is designed for the R36S 640x480 screen and shows command output in a right-side terminal pane.
